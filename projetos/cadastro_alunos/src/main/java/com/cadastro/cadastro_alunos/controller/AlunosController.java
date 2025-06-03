@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cadastro.cadastro_alunos.model.Alunos;
+import com.cadastro.cadastro_alunos.model.Aluno;
 import com.cadastro.cadastro_alunos.service.AlunosService;
 
 @RestController
@@ -26,24 +26,24 @@ public class AlunosController {
     private AlunosService service;
 
     @GetMapping
-    public List<Alunos> listarTodos() {
+    public List<Aluno> listarTodos() {
         return service.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Alunos> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Aluno> buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id)
                       .map(ResponseEntity::ok)
                       .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Alunos salvar(@RequestBody Alunos alunos) {
+    public Aluno salvar(@RequestBody Aluno alunos) {
         return service.salvar(alunos);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Alunos> atualizar(@PathVariable Long id, @RequestBody Alunos alunos) {
+    public ResponseEntity<Aluno> atualizar(@PathVariable Long id, @RequestBody Aluno alunos) {
         if (!service.buscarPorId(id).isPresent()) {
             return ResponseEntity.notFound().build();
         }
