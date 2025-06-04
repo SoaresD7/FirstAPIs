@@ -1,5 +1,5 @@
-create database cadastro_Alunos;
-use Cadastro_Alunos;
+create database escola;
+use escola;
 
 -- Criação da tabela aluno
 CREATE TABLE alunos (
